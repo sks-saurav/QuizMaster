@@ -4,10 +4,16 @@
     </a>
     <span>Exam Portal</span>
     <span class="example-spacer"></span>
-    <a [routerLink]="'/login'" mat-button class="example-icon favorite-icon">
+    <a *ngIf="!login.isLoggedIn()" [routerLink]="'/login'" mat-button class="example-icon favorite-icon">
         Login
     </a>
-    <a [routerLink]="'/signup'" mat-button class="example-icon favorite-icon">
+    <a *ngIf="!login.isLoggedIn()" [routerLink]="'/signup'" mat-button class="example-icon favorite-icon">
         Signup
+    </a>
+    <a  *ngIf="login.isLoggedIn()" mat-button class="example-icon favorite-icon">
+        {{login.getUser().username}}
+    </a>
+    <a (click)="logout()" *ngIf="login.isLoggedIn()" mat-button class="example-icon favorite-icon">
+        Logout
     </a>
 </mat-toolbar>
