@@ -1,0 +1,50 @@
+<mat-card *ngIf="user">
+    <h2 class="mt20 ml20">Your Profile Detail</h2>
+    <!-- {{user | json}} -->
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+
+            <div class="container text-center">
+                <img src="https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
+                    alt="" class="profile-image">
+                <h1>{{user.firstName}} {{user.lastName}}</h1>
+            </div>
+
+            <div class="row mt20">
+                <div class="col-md-6 offset-md-3">
+                    <!-- table detaails -->
+                    <table class="table text-center">
+                        <tr>
+                            <td>Username</td>
+                            <td>{{user.username}}</td>
+                        </tr>
+                        <tr>
+                            <td>User Id</td>
+                            <td>EXAM{{user.id}}</td>
+                        </tr>
+                        <tr>
+                            <td>Phone</td>
+                            <td>{{user.phone}}</td>
+                        </tr>
+                        <tr>
+                            <td>Role</td>
+                            <td>{{user.authorities[0].authority}}</td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>{{user.enabled ? "ACTIVE" : "NOTACTIVE"}}</td>
+                        </tr>
+                    </table>
+                    <div class="text-center">
+                        <mat-card-actions>
+                            <button mat-raised-button color="primary">UPDATE</button>
+                            <button mat-raised-button color="accent">SHARE</button>
+                        </mat-card-actions>
+                    </div>
+                    
+                </div>
+               
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

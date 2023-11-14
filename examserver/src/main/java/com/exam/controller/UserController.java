@@ -1,10 +1,13 @@
 package com.exam.controller;
 
+import com.exam.helper.UserFoundException;
 import com.exam.model.Role;
 import com.exam.model.User;
 import com.exam.model.UserRole;
 import com.exam.sevice.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashSet;
@@ -17,9 +20,16 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
     // creating user
     @PostMapping("/")
     public User createUser(@RequestBody User user) throws Exception {
+        user.setProfile("default.png");
+        // encoding password with bcryptpasswordencoder
+        user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
 
         Set<UserRole> roles = new HashSet<>();
 
@@ -49,6 +59,11 @@ public class UserController {
     @PutMapping("/")
     public User updateUser(@RequestBody User user) {
         return this.userService.updateUser(user);
+    }
+
+    @ExceptionHandler(UserFoundException.class)
+    public ResponseEntity<?> exceptionHandler(UserFoundException ex) throws UserFoundException {
+        throw new UserFoundException();
     }
 
 }

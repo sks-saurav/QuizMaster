@@ -4,16 +4,17 @@
     </a>
     <span>Exam Portal</span>
     <span class="example-spacer"></span>
-    <a *ngIf="!login.isLoggedIn()" [routerLink]="'/login'" mat-button class="example-icon favorite-icon">
+    <a *ngIf="!isLoggedIn" [routerLink]="'/login'" mat-button class="example-icon favorite-icon">
         Login
     </a>
-    <a *ngIf="!login.isLoggedIn()" [routerLink]="'/signup'" mat-button class="example-icon favorite-icon">
+    <a *ngIf="!isLoggedIn" [routerLink]="'/signup'" mat-button class="example-icon favorite-icon">
         Signup
     </a>
-    <a  *ngIf="login.isLoggedIn()" mat-button class="example-icon favorite-icon">
-        {{login.getUser().username}}
+    <a  *ngIf="isLoggedIn && user" mat-button class="example-icon favorite-icon" routerLink="/admin/profile">
+        <!-- {{login.getUser().username}} -->
+        {{user.username}}
     </a>
-    <a (click)="logout()" *ngIf="login.isLoggedIn()" mat-button class="example-icon favorite-icon">
+    <a (click)="logout()" *ngIf="isLoggedIn" mat-button class="example-icon favorite-icon">
         Logout
     </a>
 </mat-toolbar>

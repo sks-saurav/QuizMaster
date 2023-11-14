@@ -21,6 +21,14 @@ import {MatIconModule} from '@angular/material/icon';
 import { authInterceptorProviders } from './services/auth.interceptor';
 import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
 import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-dashboard.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import {MatListModule} from '@angular/material/list';
+import { SidebarComponent } from './pages/admin/sidebar/sidebar.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
+import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
+import { AddCategoriesComponent } from './pages/admin/add-categories/add-categories.component';
+import { ViewQuizzesComponent } from './pages/admin/view-quizzes/view-quizzes.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +40,12 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
     HomeComponent,
     UserDashboardComponent,
     AdminDashboardComponent,
+    ProfileComponent,
+    SidebarComponent,
+    WelcomeComponent,
+    ViewCategoriesComponent,
+    AddCategoriesComponent,
+    ViewQuizzesComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +59,8 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
     MatSnackBarModule,
     MatCardModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule
   ],
 
 
